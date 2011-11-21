@@ -11,10 +11,12 @@ rescue Bundler::BundlerError => e
 end
 require 'rake'
 
+
+
 require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
-  gem.name = "online-users"
+  gem.name = "online_users"
   gem.homepage = "http://github.com/aiionx/online-users"
   gem.license = "MIT"
   gem.summary = %Q{TODO: one-line summary of your gem}
@@ -22,6 +24,8 @@ Jeweler::Tasks.new do |gem|
   gem.email = "aion.x@hotmail.com"
   gem.authors = ["aiionx"]
   # dependencies defined in Gemfile
+  gem.add_dependency "juggernaut", "~> 2.1.0"
+  gem.add_dependency "redis", "~> 2.2.2"
 end
 Jeweler::RubygemsDotOrgTasks.new
 
@@ -47,7 +51,7 @@ Rake::RDocTask.new do |rdoc|
   version = File.exist?('VERSION') ? File.read('VERSION') : ""
 
   rdoc.rdoc_dir = 'rdoc'
-  rdoc.title = "online-users #{version}"
+  rdoc.title = "online_users #{version}"
   rdoc.rdoc_files.include('README*')
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
