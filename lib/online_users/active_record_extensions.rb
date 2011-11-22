@@ -20,6 +20,10 @@ module OnlineUsers
         $redis.set("session#{self.id}", self.id)
         $redis.expire("session#{self.id}", seg)
       end
+        
+      def online?
+        !!$redis.get("session#{self.id}")
+      end
       
       protected
       

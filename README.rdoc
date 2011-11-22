@@ -42,5 +42,8 @@ When you run:
 After 10 seconds:
   User.online #=> []
 
+For a single user just ask:
+  User.first.online? #=> false
+
 There is a lot to improve in this gem.
 
