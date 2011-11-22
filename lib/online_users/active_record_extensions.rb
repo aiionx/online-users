@@ -1,14 +1,32 @@
 module OnlineUsers
   module ActiveRecordExtensions 
     module ClassMethods
-      def act_as_tracker
-        include ActiveRecordExtensions::InstanceMethods 
+      def be_online
+        after_create :set_session
+        include ActiveRecordExtensions::InstanceMethods
+        extend ActiveRecordExtensions::OtherClassMethods
+      end
+    end
+    
+    module OtherClassMethods 
+      def online
+        where("session IN (#{$redis.keys("*session*").collect {|x| "'#{x}'" } * ", "})")
       end
     end
     
     module InstanceMethods 
-      def online?
+      
+      def go_online(seg)
+        $redis.set("session#{self.id}", self.id)
+        $redis.expire("session#{self.id}", seg)
       end
+      
+      protected
+      
+      def set_session
+        update_attribute(:session, "session#{self.id}")
+      end
+      
     end
   end 
 end

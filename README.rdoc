@@ -17,3 +17,30 @@ Description goes here.
 Copyright (c) 2011 aiionx. See LICENSE.txt for
 further details.
 
+With this gem you can set an expiry time to a user session on the server side.
+
+Install:
+
+Add it to your gemfile:
+gem online_users, :git => git://github.com/aiionx/online_users
+
+$ bundle
+
+create an initializer with redis global variable:
+$redis = Redis.new(:host => YOURHOST , :port => REDIS_PORT(default: 6379), :db => DB_NUMBER(default: 0))
+
+run:
+$ rails g be_online [model_name] (defaults to user)
+$ rake db:migrate
+
+When you create, login, or push from JS an async post give a user an expiry time:
+current_user.go_online 10 #=> The user will be considered online for 10 sec.
+
+When you run:
+User.online #=> [<User id: 5, email: "a@a.com", password_digest: "$2a$10$s3uvu73XdHGeay83t72Hi.svZc6eZG7yMkDYTb7jLUXv...", session: "session5", created_at: "2011-11-22 02:31:03", updated_at: "2011-11-22 02:31:03">]
+
+After 10 seconds:
+User.online #=> []
+
+There is a lot to improve in this gem.
+

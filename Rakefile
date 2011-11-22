@@ -19,13 +19,13 @@ Jeweler::Tasks.new do |gem|
   gem.name = "online_users"
   gem.homepage = "http://github.com/aiionx/online-users"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{one-line summary of your gem}
+  gem.description = %Q{longer description of your gem}
   gem.email = "aion.x@hotmail.com"
   gem.authors = ["aiionx"]
   # dependencies defined in Gemfile
-  gem.add_dependency "juggernaut", "~> 2.1.0"
   gem.add_dependency "redis", "~> 2.2.2"
+  gem.add_dependency "juggernaut", "~> 2.1.0"
 end
 Jeweler::RubygemsDotOrgTasks.new
 
