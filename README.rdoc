@@ -33,6 +33,12 @@ run:
   $ rails g be_online [model_name] (defaults to user)
   $ rake db:migrate
 
+Add to your model:
+  class User < ActiveRecord::Base
+    be_online
+  end
+
+
 When you create, login, or push from JS an async post give a user an expiry time:
   current_user.go_online 10 #=> The user will be considered online for 10 sec.
 
